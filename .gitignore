@@ -3,11 +3,14 @@
 **/obj/
 
 **/.vscode
+/.vsconfig
 **/.vs
 **/.editorconfig
 
 **/Assets/Plugins/*
 **/Assets/Plugins.meta
+/Logs/
+/UserSettings/
 
 *.idea
 *.csproj
@@ -25,3 +28,4 @@ build/*
 /.gradle/
 
 /builds/
+
