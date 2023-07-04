@@ -13,20 +13,20 @@ public class FireworkSpawner : MonoBehaviour
     }
     [SerializeField] private List<Entry> fireworkPrefabs = new();
 
-    private float totalWeight = 0f;
+    public float TotalWeight { get; private set; } = 0f;
 
-    private void UpdateSpawnTable()
+    public void UpdateSpawnTable()
     {
-        totalWeight = 0.0f;
+        TotalWeight = 0.0f;
         foreach (var entry in fireworkPrefabs)
         {
-            totalWeight += entry.weight;
+            TotalWeight += entry.weight;
         }
     }
 
     private GameObject RandomPrefab()
     {
-        var r = UnityEngine.Random.Range(0.0f, totalWeight);
+        var r = UnityEngine.Random.Range(0.0f, TotalWeight);
         var weightSoFar = 0.0f;
         for (var i = 0; i < fireworkPrefabs.Count - 1; i++)
         {
@@ -39,7 +39,7 @@ public class FireworkSpawner : MonoBehaviour
         return fireworkPrefabs[^1].prefab;
     }
 
-    private void Start()
+    private void Awake()
     {
         UpdateSpawnTable();
     }
